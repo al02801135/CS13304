@@ -1,7 +1,7 @@
 ## CS13304 - Computación Avanzada en Java
 - Por: Jose Manuel Lopez Lujan, MIT
 
-### CS13304T02 - Web containers
+### CS13304T03 - Web components: Servlets
  
-#### Actividad 1 - Instalación y configuración de Tomcat
+#### Servlets
  
