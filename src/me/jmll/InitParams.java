@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,23 +14,29 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class InitParams
  */
-@WebServlet(name="InitParams", urlPatterns={"/initParams"})
+@WebServlet(
+		name = "InitParams", 
+		urlPatterns = { "/initParams" }, 
+		initParams = {
+				@WebInitParam(name = "dbHostServlet", value = "192.168.0.151"),
+				@WebInitParam(name = "dbPortServlet", value = "1501") })
 public class InitParams extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected String dbPort = null;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InitParams() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	public InitParams() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 1. Se obtiene referencia al contexto del servlet
 		ServletContext context = this.getServletContext();
@@ -38,7 +45,7 @@ public class InitParams extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.append("Context params: \n");
 		// 3. Con el método getInitParameter parte del context
-		// se obtienen los parámetros de contexto 
+		// se obtienen los parámetros de contexto
 		out.append("dbHost: ").append(context.getInitParameter("dbHost"));
 		out.append("; dbPort: ").append(context.getInitParameter("dbPort"));
 		out.append("; dbUser: ").append(context.getInitParameter("dbUser"));

@@ -10,20 +10,6 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <!-- Definición de Servlets -->
-  <servlet>
-    <servlet-name>InitParams</servlet-name>
-    <servlet-class>me.jmll.InitParams</servlet-class>
-    <init-param>
-      <param-name>dbHostServlet</param-name>
-      <param-value>192.168.0.151</param-value>
-    </init-param>
-    <init-param>
-      <param-name>dbPortServlet</param-name>
-      <param-value>1501</param-value>
-    </init-param>
-  </servlet>
-  
   <!-- Definición de Context Params -->
   <context-param>
     <param-name>dbHost</param-name>
