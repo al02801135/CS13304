@@ -3,5 +3,5 @@
 
 ### CS13304T03 - Web components: Servlets
  
-#### Servlets
+#### Deployment descriptor
  

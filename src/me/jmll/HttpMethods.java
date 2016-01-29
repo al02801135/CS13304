@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HttpMethods
  */
-@WebServlet({ "/HttpMethods", "/" })
 public class HttpMethods extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,35 +26,35 @@ public class HttpMethods extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Usando HTTP GET");
+		response.getWriter().append("Usando HTTP GET desde ").append(this.getServletName());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Usando HTTP POST");
+		response.getWriter().append("Usando HTTP POST desde ").append(this.getServletName());
 	}
 
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Usando HTTP PUT");
+		response.getWriter().append("Usando HTTP PUT desde ").append(this.getServletName());
 	}
 
 	/**
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Usando HTTP DELETE");
+		response.getWriter().append("Usando HTTP DELETE desde ").append(this.getServletName());
 	}
 
 	/**
 	 * @see HttpServlet#doOptions(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Usando HTTP OPTIONS");
+		response.getWriter().append("Usando HTTP OPTIONS desde ").append(this.getServletName());
 	}
 	
 	public String getServletInfo(){

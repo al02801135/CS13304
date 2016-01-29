@@ -9,4 +9,33 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- Definición de Servlets --> 
+  <servlet>
+    <servlet-name>HttpMethods</servlet-name>
+    <servlet-class>me.jmll.HttpMethods</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MethodsHttp</servlet-name>
+    <servlet-class>me.jmll.HttpMethods</servlet-class>
+  </servlet>
+  
+  <!-- Definición de URL patterns -->
+  <servlet-mapping>
+    <servlet-name>HttpMethods</servlet-name>
+    <url-pattern>/Http</url-pattern>
+    <url-pattern>/Http.xml</url-pattern>
+    <url-pattern>/Http.aspx</url-pattern>
+    <url-pattern>/Http.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MethodsHttp</servlet-name>
+    <url-pattern>/Methods</url-pattern>
+    <url-pattern>/Methods.xml</url-pattern>
+    <url-pattern>/Methods.aspx</url-pattern>
+    <url-pattern>/Methods.html</url-pattern>
+  </servlet-mapping>
 </web-app>
+
+
+
