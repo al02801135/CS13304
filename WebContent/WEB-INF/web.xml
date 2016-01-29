@@ -10,32 +10,32 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <!-- Definición de Servlets --> 
+  <!-- Definición de Servlets -->
   <servlet>
-    <servlet-name>HttpMethods</servlet-name>
-    <servlet-class>me.jmll.HttpMethods</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>MethodsHttp</servlet-name>
-    <servlet-class>me.jmll.HttpMethods</servlet-class>
+    <servlet-name>InitParams</servlet-name>
+    <servlet-class>me.jmll.InitParams</servlet-class>
+    <init-param>
+      <param-name>dbHostServlet</param-name>
+      <param-value>192.168.0.151</param-value>
+    </init-param>
+    <init-param>
+      <param-name>dbPortServlet</param-name>
+      <param-value>1501</param-value>
+    </init-param>
   </servlet>
   
-  <!-- Definición de URL patterns -->
-  <servlet-mapping>
-    <servlet-name>HttpMethods</servlet-name>
-    <url-pattern>/Http</url-pattern>
-    <url-pattern>/Http.xml</url-pattern>
-    <url-pattern>/Http.aspx</url-pattern>
-    <url-pattern>/Http.html</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>MethodsHttp</servlet-name>
-    <url-pattern>/Methods</url-pattern>
-    <url-pattern>/Methods.xml</url-pattern>
-    <url-pattern>/Methods.aspx</url-pattern>
-    <url-pattern>/Methods.html</url-pattern>
-  </servlet-mapping>
+  <!-- Definición de Context Params -->
+  <context-param>
+    <param-name>dbHost</param-name>
+    <param-value>192.168.0.150</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbPort</param-name>
+    <param-value>3306</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbUser</param-name>
+    <param-value>webApp</param-value>
+  </context-param>
 </web-app>
-
-
 
