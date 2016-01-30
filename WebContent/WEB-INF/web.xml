@@ -9,19 +9,8 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  <!-- Definición de Context Params -->
   <context-param>
-    <param-name>dbHost</param-name>
-    <param-value>192.168.0.150</param-value>
-  </context-param>
-  <context-param>
-    <param-name>dbPort</param-name>
-    <param-value>3306</param-value>
-  </context-param>
-  <context-param>
-    <param-name>dbUser</param-name>
-    <param-value>webApp</param-value>
+    <param-name>nombreDefault</param-name>
+    <param-value>Desconocido</param-value>
   </context-param>
 </web-app>
-
