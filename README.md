@@ -4,5 +4,3 @@
 ### CS13304T03 - Web components: Servlets
  
 #### Parámetros y formas
-
- 
