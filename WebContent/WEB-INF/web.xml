@@ -24,16 +24,18 @@
 			<file-size-threshold>5242880</file-size-threshold> <!-- 5MB -->
 		</multipart-config>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>UploadServlet</servlet-name>
 		<url-pattern>/UploadServlet</url-pattern>
 		<url-pattern>/Upload</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Escribe la definición del DownloadServlet
+		aquí.
+	 -->
 
-	<!-- Definición de Context Init Params -->
-	<context-param>
-		<param-name>pathDestino</param-name>
-		<param-value>/Users/josem/Documents/workspace/CS13304</param-value>
-	</context-param>
+
+	<!-- Escribe la definición de Context Init Params
+		aquí.
+	 -->
 </web-app>
