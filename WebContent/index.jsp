@@ -1,1 +1,2 @@
-<c:redirect url="/Saludo.do"/>
+<%-- Redirecciona a /Admin.do --%>
+<c:redirect url="/Admin.do"/>

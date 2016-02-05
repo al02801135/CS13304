@@ -1,7 +1,8 @@
 package me.jmll;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,16 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Saludo
+ * Servlet implementation class SaludoServlet
  */
-@WebServlet({ "/Saludo", "/saludo" })
-public class Saludo extends HttpServlet {
+@WebServlet({"/Admin.do", "/AdminArchivos.do"})
+public class AdminArchivos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private final static Logger LOGGER = Logger.getLogger(AdminArchivos.class.getCanonicalName());
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Saludo() {
+    public AdminArchivos() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,19 +30,13 @@ public class Saludo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		String nombre = request.getParameter("nombre");
-		out.append("<!DOCTYPE html>\n");
-		out.append("<html>\n");
-		out.append("\t <head>");
-		out.append("\t\t <title> Saludo </title>");
-		out.append("\t</head>");
-		out.append("\t<body>");
-		out.append("\t<h3> Hola " + nombre + ", </h3>");
-		out.append("\t\t <p> Este es un servlet que imprime contenido en HTML </p>");
-		out.append("\t</body>");
-		out.append("</html>");
-
+		// 4(a) Obten el atributo "errores" de la request 
+		// y asígnalo una vez más al request
+		
+		LOGGER.log(Level.INFO, "Errores: {0}", new Object[] { request.getAttribute("errores") });
+		// 4(b) Obtiene Requestdispatcher a DirForm.jsp
+		// y reenvía con el método forward
+		
 	}
 
 	/**
