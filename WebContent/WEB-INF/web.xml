@@ -4,11 +4,8 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <jsp-config>
-    <jsp-property-group>
-      <url-pattern>*.jsp</url-pattern>
-      <page-encoding>UTF-8</page-encoding>
-      <include-prelude>/WEB-INF/includes/TagLibs.jsp</include-prelude>
-    </jsp-property-group>
-  </jsp-config>
+  <context-param>
+  	<param-name>tema</param-name>
+  	<param-value>Core Tag Library (c)</param-value>
+  </context-param>
 </web-app>
