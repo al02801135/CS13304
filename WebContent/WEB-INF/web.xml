@@ -6,6 +6,6 @@
   </welcome-file-list>
   <context-param>
   	<param-name>tema</param-name>
-  	<param-value>Core Tag Library (c)</param-value>
+  	<param-value>XML Tag Library (x)</param-value>
   </context-param>
 </web-app>

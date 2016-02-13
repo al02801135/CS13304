@@ -3,4 +3,4 @@
 
 ### CS13304T05 - JSP Standard Tag Libraries
  
-#### Tema 5 - Core Tag Library (c)
+#### Tema 5 - XML Tag Library (X)
