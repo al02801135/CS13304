@@ -6,6 +6,6 @@
   </welcome-file-list>
   <context-param>
   	<param-name>tema</param-name>
-  	<param-value>Internationalization Tag Library (FMT)</param-value>
+  	<param-value>Formatting Tag Library (FMT)</param-value>
   </context-param>
 </web-app>

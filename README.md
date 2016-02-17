@@ -3,4 +3,4 @@
 
 ### CS13304T05 - JSP Standard Tag Libraries
  
-#### Tema 5 - Internationalization Tag Library (FMT)
+#### Tema 5 - Internationalization and Formatting Tag Library (FMT)
