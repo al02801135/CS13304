@@ -6,6 +6,6 @@
   </welcome-file-list>
   <context-param>
   	<param-name>tema</param-name>
-  	<param-value>SQL Tag Library (SQL)</param-value>
+  	<param-value>Functions Tag Library (FN)</param-value>
   </context-param>
 </web-app>
