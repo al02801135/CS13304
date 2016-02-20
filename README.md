@@ -1,6 +1,6 @@
 ## CS13304 - Computación Avanzada en Java
 - Por: Jose Manuel Lopez Lujan, MIT
 
-### CS13304T05 - JSP Standard Tag Libraries
+### CS13304T06 - Tema 6 Tags Personalizadas
  
-#### Tema 5 - Actividad 1
+#### Tema 6 - Encapsular contenido en Tag Files
