@@ -5,7 +5,7 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <context-param>
-  	<param-name>tema</param-name>
-  	<param-value>A01 - JSP Standard Tag Libraries</param-value>
+    <param-name>tema</param-name>
+    <param-value>A01 - JSP Standard Tag Libraries</param-value>
   </context-param>
 </web-app>

@@ -3,4 +3,4 @@
 
 ### CS13304T06 - Tema 6 Tags Personalizadas
  
-#### Tema 6 - Encapsular contenido en Tag Files
+#### Tema 6 - Controladores de Tags
