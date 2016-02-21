@@ -1,14 +1,23 @@
-<%@ taglib prefix="btBase" tagdir="/WEB-INF/tags/bootstrap" %>
-<%@ taglib prefix="f" uri="http://jmll.me/jsp/jstl/file"%>
+<%@ taglib prefix="b" tagdir="/WEB-INF/tags/bootstrap" %>
 
-<btBase:content title="Hello Bootstrap" lang="en_US">
-	<div class="container">
-		<h1>Utilizando custom tag en TLD</h1>
-		  <ul>
-		    <li><f:fileDown attributeName="archivo" downloadController="DownloadImage" fileName="Foto1.png"/></li>
-		    <li><f:fileDown attributeName="archivo" downloadController="DownloadDoc" fileName="Doc1.doc" openNewWindow="true"/></li>
-		    <li><f:fileDown attributeName="archivo" downloadController="DownloadISO" fileName="Ubuntu.iso"/></li>
-		  </ul>
-		<!-- Obtenido de http://getbootstrap.com/css/#forms -->
-	</div>
-</btBase:content>
+<b:base title="Hello Bootstrap" lang="en_US">
+	<%-- TagFile Container <div class="container|container-fluid"> --%>
+	<b:container fluid="false">
+	<%-- TagFile pageHeader <div class="page-header"> --%>
+	<b:pageHeader title="CS13304" subTitle="Tema 6"/>
+	<%-- TagFile jumbotron <div class="jumbotron"> --%>
+		<b:jumbotron title="Actividad 1">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec sapien at 
+			lectus aliquam scelerisque vel nec massa. 
+			Donec eget dolor sollicitudin arcu sagittis auctor. Duis nec orci tristique, 
+			pretium mauris vitae, pretium arcu.
+		</b:jumbotron>
+		<%-- TagFile jumbotron <div class="alert alert-success|warning|danger|info" >--%>
+		<b:alert type="success" dismissable="true">Success Alert! </b:alert>
+		<b:alert type="info" dismissable="false">Informational Alert!</b:alert>
+		<b:alert type="danger" dismissable="true" fadeIn="true">
+			Danger Error! Click <a href="#">here</a> to debug.
+		</b:alert>
+		<b:alert type="warning" dismissable="true" fadeIn="true">Warning Alert!</b:alert>
+	</b:container>
+</b:base>

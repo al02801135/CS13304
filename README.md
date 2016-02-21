@@ -3,4 +3,4 @@
 
 ### CS13304T06 - Tema 6 Tags Personalizadas
  
-#### Tema 6 - Controladores de Tags
+#### Tema 6 - Actividad 1
