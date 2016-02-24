@@ -6,6 +6,14 @@
   </welcome-file-list>
   <context-param>
     <param-name>tema</param-name>
-    <param-value>A01 - Tags Personalizadas</param-value>
+    <param-value>Web apps avanzadas - Sesiones y Cookies</param-value>
   </context-param>
+  <!-- Configuración de la sesión -->
+  <session-config>
+  	<session-timeout>30</session-timeout>
+  	<cookie-config>
+  		<http-only>true</http-only>
+  	</cookie-config>
+  	<tracking-mode>COOKIE</tracking-mode>
+  </session-config>
 </web-app>

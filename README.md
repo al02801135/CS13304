@@ -1,6 +1,6 @@
 ## CS13304 - Computación Avanzada en Java
 - Por: Jose Manuel Lopez Lujan, MIT
 
-### CS13304T06 - Tema 6 Tags Personalizadas
+### CS13304T07 - Tema 7 Web apps avanzadas
  
-#### Tema 6 - Actividad 1
+#### Tema 7 -  Sesiones y Cookies
