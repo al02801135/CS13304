@@ -1,7 +1,9 @@
 package me.jmll.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,9 +36,15 @@ public class Session extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
-		// this.getServletContext().setSessionTrackingModes(EnumSet.of(SessionTrackingMode.COOKIE));
-		// Asigna atributos a la session
-		doSession(request, response);
+		List<String> errors = new ArrayList<String>();
+		if (request.getSession().getAttribute("user") != null){
+			request.getRequestDispatcher("/WEB-INF/views/session.jsp").forward(request, response);
+		} else {
+			log.warn("You should login first.");
+			errors.add("You should login first.");
+			request.setAttribute("errors", errors);
+			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+		}
 		
 		// Incrementa o inicializa el contador de visitas
 		doVisit(request, response);
@@ -45,9 +53,6 @@ public class Session extends HttpServlet {
 		doCookie(request, response);
 		
 		fakeException();
-		// Forward
-		request.getRequestDispatcher("/WEB-INF/views/session.jsp").forward(request, response);
-		
 	}
 	
 	private void fakeException(){
@@ -57,28 +62,6 @@ public class Session extends HttpServlet {
 		catch(Exception ex){
 			log.error("fakeException: {}", ex.getMessage());
 		}
-	}
-	private void doSession(HttpServletRequest request, 
-			HttpServletResponse response) throws ServletException, IOException {
-		
-		// Obtiene la session actual
-		HttpSession session = request.getSession();
-		log.debug("Inicia doSession para {}", session.getId());
-		// Crea un objeto Date a partir de un Long que es cuando se creo el cookie
-		Date createTime = new Date(session.getCreationTime());
-		// Obtiene la session ID (JSESSIONID)
-		String sessionId = session.getId();
-		// Obtiene el last Accessed time en objeto Date
-		Date lastAccessedTime = new Date(session.getLastAccessedTime());
-		// Obtiene max inactive interval (timeout) en segundos
-		int maxInactiveInterval = session.getMaxInactiveInterval();
-
-		// Guarda atributos en la session
-		session.setAttribute("lastAccessedTime", lastAccessedTime);
-		session.setAttribute("creationTime", createTime);
-		session.setAttribute("sessionId", sessionId);
-		session.setAttribute("maxInactiveInterval", maxInactiveInterval);
-		log.debug("Termina doSession para {}", session.getId());
 	}	
 	
 	private void doVisit(HttpServletRequest request, 
@@ -94,7 +77,10 @@ public class Session extends HttpServlet {
 				session.setAttribute("visits", visits+=1);
 				}
 		    }
-		else{
+		else if(request.getParameter("reset") != null){
+			 session.setAttribute("visits", 0);
+		}
+		else {
 		    session.setAttribute("visits", 1);
 		}		
 	}

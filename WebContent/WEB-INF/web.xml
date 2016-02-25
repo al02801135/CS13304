@@ -6,25 +6,22 @@
   </welcome-file-list>
   <context-param>
     <param-name>tema</param-name>
-    <param-value>Web apps avanzadas - Logging</param-value>
+    <param-value>Web apps avanzadas - Actividad 1</param-value>
   </context-param>
-  <!-- Configuración de la sesión -->
   <session-config>
-  	<session-timeout>30</session-timeout>
-  	<cookie-config>
-  		<http-only>true</http-only>
-  	</cookie-config>
-  	<tracking-mode>COOKIE</tracking-mode>
+    <session-timeout>30</session-timeout>
+    <cookie-config>
+      <http-only>true</http-only>
+    </cookie-config>
+    <tracking-mode>COOKIE</tracking-mode>
   </session-config>
-  <!-- Configuración de JSP -->
   <jsp-config>
-  	<jsp-property-group>
-  		<url-pattern>*.jsp</url-pattern>
-  		<page-encoding>UTF-8</page-encoding>
-  		<include-prelude>/WEB-INF/includes/base.jsp</include-prelude>
-  		<default-content-type>text/html</default-content-type>
-  	</jsp-property-group>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <page-encoding>UTF-8</page-encoding>
+      <include-prelude>/WEB-INF/includes/base.jsp</include-prelude>
+      <default-content-type>text/html</default-content-type>
+    </jsp-property-group>
   </jsp-config>
-  <!-- Configuración  para clustering -->
   <distributable/>
 </web-app>
