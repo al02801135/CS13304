@@ -3,4 +3,4 @@
 
 ### CS13304T07 - Tema 7 Web apps avanzadas
  
-#### Tema 7 -  Sesiones y Cookies
+#### Tema 7 -  Logging

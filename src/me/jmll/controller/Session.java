@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Servlet implementation class Session
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/Sessions")
 public class Session extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger log = LogManager.getLogger();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -31,22 +34,36 @@ public class Session extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
+		// this.getServletContext().setSessionTrackingModes(EnumSet.of(SessionTrackingMode.COOKIE));
 		// Asigna atributos a la session
 		doSession(request, response);
 		
 		// Incrementa o inicializa el contador de visitas
 		doVisit(request, response);
-		
+
 		// doCookie
 		doCookie(request, response);
-
+		
+		fakeException();
 		// Forward
 		request.getRequestDispatcher("/WEB-INF/views/session.jsp").forward(request, response);
+		
+	}
+	
+	private void fakeException(){
+		try {
+			throw new Exception("Excepción creada manualmente");
+		}
+		catch(Exception ex){
+			log.error("fakeException: {}", ex.getMessage());
+		}
 	}
 	private void doSession(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
+		
 		// Obtiene la session actual
 		HttpSession session = request.getSession();
+		log.debug("Inicia doSession para {}", session.getId());
 		// Crea un objeto Date a partir de un Long que es cuando se creo el cookie
 		Date createTime = new Date(session.getCreationTime());
 		// Obtiene la session ID (JSESSIONID)
@@ -61,6 +78,7 @@ public class Session extends HttpServlet {
 		session.setAttribute("creationTime", createTime);
 		session.setAttribute("sessionId", sessionId);
 		session.setAttribute("maxInactiveInterval", maxInactiveInterval);
+		log.debug("Termina doSession para {}", session.getId());
 	}	
 	
 	private void doVisit(HttpServletRequest request, 
@@ -84,6 +102,7 @@ public class Session extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// Crea nuevo Cookie
 		Cookie cs13304 = new Cookie("CS13304", this.getServletContext().getInitParameter("tema"));
+		cs13304.setComment(this.getServletContext().getInitParameter("tema"));
 		// Asigna el path del cookie
 		cs13304.setPath(request.getRequestURI());
 		// Si es HTTP only
@@ -91,7 +110,8 @@ public class Session extends HttpServlet {
 		// Asigna máximo de 30 seg de vida
 		cs13304.setMaxAge(30);
 		//agrega cookie a la respuesta
-		response.addCookie(cs13304);		
+		response.addCookie(cs13304);
+		log.warn("Agregando cookie {} ({}) a {}", cs13304.getName(), cs13304.getComment(), request.getRemoteAddr());
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
