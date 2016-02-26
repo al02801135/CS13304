@@ -18,14 +18,17 @@
         </RollingFile>
     </appenders>
     <loggers>
-    <!-- 7. Se agregan tres loggers, uno por cada clase
-     con referencia al appender LogFile 
-     -->
-     
         <root level="debug">
             <appender-ref ref="Console" />
         </root>
-        <!-- Escribe aquí tu código -->
-
+        <Logger name="me.jmll.controller.Login" level="TRACE">
+        	<appender-ref ref="LogFile"/>
+        </Logger>
+        <Logger name="me.jmll.controller.Logout" level="TRACE">
+        	<appender-ref ref="LogFile"/>
+        </Logger>
+        <Logger name="me.jmll.filter.Authorization" level="TRACE">
+        	<appender-ref ref="LogFile"/>
+        </Logger>
     </loggers>
 </configuration>

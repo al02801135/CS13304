@@ -1,5 +1,3 @@
-<log:setLogger logger="me.jmll.controller.Login" />
-<log:entry/>
 <b:base title="${initParam.tema}">
 	<div class="container">
 		<form class="form-signin" action="${pageContext.request.contextPath}/Login" method="post">
@@ -17,10 +15,14 @@
         <br>
         <c:if test="${not empty requestScope.errors }">
         	<c:forEach var="error" items="${requestScope.errors }">
-        		<div class="alert alert-info" role="alert">${error }</div>
+        		<div class="alert alert-danger" role="alert">${error }</div>
+        	</c:forEach>
+        </c:if>
+        <c:if test="${not empty requestScope.warnings }">
+        	<c:forEach var="warning" items="${requestScope.warnings }">
+        		<div class="alert alert-info" role="alert">${warning }</div>
         	</c:forEach>
         </c:if>
       </form>
 	</div>
 </b:base>
-<log:exit/>

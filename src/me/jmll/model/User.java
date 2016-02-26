@@ -1,10 +1,54 @@
+/**
+ * 
+ */
 package me.jmll.model;
 
-public class User {
-	/* 1. cuenta con tres atributos de tipo String: 
-	 * username, password y fullName. Cree los 
-	 * getters/setters y constructor con parámetros 
-	 * username y password
-	 * */
+import java.io.Serializable;
 
+/**
+ * @author josem
+ *
+ */
+public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String username;
+	private String password;
+	private String fullName;
+	
+	public User(String username, String password){
+		this.username = username;
+		this.password = password;
+	}
+	public User(String username, String password, String fullName){
+		this.username = username;
+		this.password = password;
+		this.fullName = fullName;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+	public String toString(){
+		return String.format("UserName: %s;Pass: %s;FullName: %s",
+				this.getUsername(), 
+				this.getPassword(),
+				this.getFullName());
+	}
 }
