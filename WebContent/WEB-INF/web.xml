@@ -8,6 +8,7 @@
     <param-name>tema</param-name>
     <param-value>Filtros</param-value>
   </context-param>
+
   <session-config>
     <session-timeout>30</session-timeout>
     <cookie-config>
@@ -23,6 +24,9 @@
       <default-content-type>text/html</default-content-type>
     </jsp-property-group>
   </jsp-config>
+  <!-- Escribe aquí tu código -->
+ 
+  <!-- Escribe aquí tu código -->
   <filter>
     <filter-name>authorizationFilter</filter-name>
     <filter-class>me.jmll.filter.Authorization</filter-class>

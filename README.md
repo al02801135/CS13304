@@ -3,4 +3,4 @@
 
 ### CS13304T07 - Tema 8 Filters
  
-#### Tema 8 -  Filters en la práctica
+#### Tema 8 -  Actividad 1

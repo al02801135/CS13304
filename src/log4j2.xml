@@ -30,5 +30,8 @@
         <Logger name="me.jmll.filter.Authorization" level="TRACE">
         	<appender-ref ref="LogFile"/>
         </Logger>
+        <!-- Escribe aquí tu código -->
+
+        <!-- Escribe aquí tu código -->
     </loggers>
 </configuration>
