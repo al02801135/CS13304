@@ -1,6 +1,6 @@
 ## CS13304 - Computación Avanzada en Java
 - Por: Jose Manuel Lopez Lujan, MIT
 
-### CS13304T07 - Tema 8 Filters
+### CS13304T07 - Tema 9 Spring Framework
  
-#### Tema 8 -  Actividad 1
+#### Tema 9 -  Configuración
