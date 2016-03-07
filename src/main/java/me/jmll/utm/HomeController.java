@@ -48,6 +48,7 @@ public class HomeController {
 		return helloService.getHello(name);
 	}
 	
+	/* 4(a) Inyectar HelloService en HomeController */
 	public void setHelloService(HelloService helloService)
     {
         this.helloService = helloService;

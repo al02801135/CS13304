@@ -5,6 +5,8 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-4.0.xsd
             http://www.springframework.org/schema/mvc
             http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	
@@ -22,9 +24,14 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<!-- Define el bean helloServiceImpl y lo inyecta a HomeController -->
-	<bean class="me.jmll.utm.HomeController" name="HomeController">
-		<property name="helloService" ref="helloServiceImpl" />
-	</bean>
+	<!-- 2(a) Habilita la configuración de Spring por medio de anotaciones -->
+    <!-- 
+    	Escribe tu código aquí
+     -->
+    
+    <!-- 2(b) Establece el escaneo de componentes del paquete me.jmll.utm -->
+    <!-- 
+    	Escribe tu código aquí
+     -->
 	
 </beans>
