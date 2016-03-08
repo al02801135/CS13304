@@ -1,11 +1,12 @@
-package me.jmll.utm;
+package me.jmll.utm.web;
 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.inject.Inject;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 	private HelloService helloService;
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LogManager.getLogger(HomeController.class);
 	
 	/**
 	 * Simplemente selecciona el template home.jsp para
@@ -48,7 +49,10 @@ public class HomeController {
 		return helloService.getHello(name);
 	}
 	
-	/* 4(a) Inyectar HelloService en HomeController */
+	/** 2(a) Inyectar HelloService en HomeController */
+	// Escribe tu código aquí {
+
+	// } 
 	public void setHelloService(HelloService helloService)
     {
         this.helloService = helloService;

@@ -1,4 +1,4 @@
-package me.jmll.utm;
+package me.jmll.utm.web;
 
 public interface HelloService {
     public String getHello(String name);
