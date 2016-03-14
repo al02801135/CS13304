@@ -18,26 +18,23 @@ public class InitializeApp implements WebApplicationInitializer
         container.getServletRegistration("default").addMapping("/resource/*");
         /**
          * Crea e inicializa Spring Root Context
-         * */
+         **/
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
         rootContext.register(RootContextConfig.class);
         /**
          *  Administra el ciclo de vida del Root Application Context
-         * */
+         **/
         container.addListener(new ContextLoaderListener(rootContext));
         /**
          * Crea e inicializa Spring Servlet Context
-         * */
+         **/
         AnnotationConfigWebApplicationContext servletContext = new AnnotationConfigWebApplicationContext();
         servletContext.register(ServletContextConfig.class);
+        
         /**
          * Inicializando Servlet Dispatcher
-         * */
-        ServletRegistration.Dynamic dispatcher = container.addServlet(
-                "springDispatcher", new DispatcherServlet(servletContext)
-        );
-        
-        
+         **/
+        ServletRegistration.Dynamic dispatcher = container.addServlet("springDispatcher", new DispatcherServlet(servletContext));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
     }

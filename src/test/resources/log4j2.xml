@@ -18,7 +18,7 @@
 	</appenders>
 	<loggers>
 		<!-- Root Logger -->
-		<root level="info">
+		<root level="debug">
 			<appender-ref ref="Console" />
 			<appender-ref ref="LogFile"/>
 		</root>
@@ -31,6 +31,8 @@
 		<logger name="org.springframework.beans" level="info"/>
 		<logger name="org.springframework.context" level="info"/>
 		<logger name="org.springframework.web" level="info"/>
+		<logger name="org.apache" level="info"/>
 
 	</loggers>
+	
 </configuration>

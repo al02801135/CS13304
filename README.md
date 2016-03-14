@@ -1,6 +1,6 @@
 ## CS13304 - Computación Avanzada en Java
 - Por: Jose Manuel Lopez Lujan, MIT
 
-### CS13304T07 - Tema 9 Spring Framework
+### CS13304T10 - Spring Framework MVC
  
-#### Tema 9 -  Actividad 2
+#### Tema 10 -  Request Mapping, Body, Part; Models, Response Entities

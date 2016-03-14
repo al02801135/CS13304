@@ -2,10 +2,10 @@ package me.jmll.utm.web;
 
 import org.springframework.stereotype.Service;
 
-/** 1(a) Define que Spring cree una instancia de HelloServiceImpl */
-//Escribe tu código aquí {
-
-//} 
+/**
+ *  Define que Spring cree una instancia de HelloServiceImpl 
+ **/
+@Service
 public class HelloServiceImpl implements HelloService {
 
 	@Override
