@@ -64,13 +64,16 @@ Temporary Items
 #.factorypath
 
 # PDT-specific (PHP Development Tools)
-#.buildpath
+.buildpath
 
 # sbteclipse plugin
-#.target
+.target
 
 # TeXlipse plugin
 #.texlipse
 
 # STS (Spring Tool Suite)
-#.springBeans
+.springBeans
+
+# Build
+target/
