@@ -49,16 +49,16 @@ public class InitializeApp implements WebApplicationInitializer
          *  maxRequestSize = 40MB
          *  fileSizeThreshold = 512000
          * */
-        // Escribe tu código aquí {
-
-        // }
+        dispatcher.setMultipartConfig(new MultipartConfigElement(
+                null, 20_971_520L, 41_943_040L, 512_000
+        ));
         
         /**
          * 1 (b) Registra Filters para autenticación me.jmll.utm.filter.Authorization
          * para los url patterns /dashboard, /list, /upload y sus variantes con expresiones ant
          * */
-        // Escribe tu código aquí {
-
-        // }
+        FilterRegistration.Dynamic registration = container.addFilter("authorizationFilter", new Authorization());
+        registration.addMappingForUrlPatterns(null, false, "/dashboard", "/dashboard/*",
+        		"/list", "/list/*", "/upload", "/upload/*");
     }
 }
