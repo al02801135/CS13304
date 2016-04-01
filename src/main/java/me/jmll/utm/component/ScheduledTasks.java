@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  *  cargada por el contexto raíz.
  * **/
 // Escribe tu código aquí {
-
+@Component
 // }
 public class ScheduledTasks {
 	private static final Logger logger = LogManager.getLogger();
@@ -22,21 +22,21 @@ public class ScheduledTasks {
     /**
      * Ejecución por medio de intervalo
      * */
-    @Scheduled(fixedRate = 8000)
+    //@Scheduled(fixedRate = 8000)
     public void reportCurrentTimeRate() {
         logger.info("fixedRate: The time is now {}", dateFormat.format(new Date()));
     }
     /**
      * Ejecución al completar la tarea anterior
      * */   
-    @Scheduled(fixedDelay = 5000)
+    //@Scheduled(fixedDelay = 5000)
     public void reportCurrentTimeDelay() {
         logger.info("fixedDelay: The time is now {}", dateFormat.format(new Date()));
     }
     /**
      * Ejecución por medio de intervalo con formato Cron
      * */
-    @Scheduled(cron = "*/10 * * * * ?")
+    //@Scheduled(cron = "*/10 * * * * ?")
     public void reportCurrentTimeCron() {
         logger.info("Cron Scheduled: The time is now {}", dateFormat.format(new Date()));
     }

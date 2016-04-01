@@ -30,7 +30,7 @@ public class NotificationServiceImpl implements NotificationService {
 		logger.info("{} started subject={}, message={}, toAddress={}, ccAddress={}", threadName,
 				subject, message, toAddress, ccAddress);
 		/**
-		 * 5 (b) Crea un objeto de tipo SimpleMailMessage
+		 * Crea un objeto de tipo SimpleMailMessage
 		 * configurando To con setTo y el valor de (String.join(",", toAddress)
 		 * CC con el método setCc y el valor de String.join(",", ccAddress)
 		 * Subject con el método setSubject y el valor de subject
@@ -39,13 +39,11 @@ public class NotificationServiceImpl implements NotificationService {
 		 * */
 		try {
 			SimpleMailMessage emailMessage = new SimpleMailMessage();
-			// Escribe tu código aquí {
-
+			emailMessage.setTo(String.join(",", toAddress));
 			if (ccAddress.size() > 0 && !ccAddress.get(0).isEmpty())
 				emailMessage.setCc(String.join(",", ccAddress));
-
-
-			// }
+			emailMessage.setSubject(subject);
+			emailMessage.setText(message);
 			mailSender.send(emailMessage);
 		} catch (Exception ex){
 			logger.error(ex.getMessage());

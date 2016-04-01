@@ -41,8 +41,9 @@ public class InitializeApp implements WebApplicationInitializer
         ServletRegistration.Dynamic dispatcher = container.addServlet("springDispatcher", new DispatcherServlet(servletContext));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
+        
         /**
-         * 1 (a) Configura Multipart para springDispatcher
+         *  Configura Multipart para springDispatcher
          *  javax.servlet.MultipartConfigElement
          *  location -> null
          *  maxFileSize = 20MB
@@ -54,7 +55,18 @@ public class InitializeApp implements WebApplicationInitializer
         ));
         
         /**
-         * 1 (b) Registra Filters para autenticación me.jmll.utm.filter.Authorization
+         * Crea e inicializa Spring REST Servlet Context
+         **/
+        AnnotationConfigWebApplicationContext restContext = new AnnotationConfigWebApplicationContext();
+        restContext.register(RestServletContextConfig.class);
+        DispatcherServlet servlet = new DispatcherServlet(restContext);
+        servlet.setDispatchOptionsRequest(true);
+        dispatcher = container.addServlet("springRestDispatcher", servlet);
+        dispatcher.setLoadOnStartup(2);
+        dispatcher.addMapping("/api/v1/*");
+        
+        /**
+         * Registra Filters para autenticación me.jmll.utm.filter.Authorization
          * para los url patterns /dashboard, /list, /upload y sus variantes con expresiones ant
          * */
         FilterRegistration.Dynamic registration = container.addFilter("authorizationFilter", new Authorization());

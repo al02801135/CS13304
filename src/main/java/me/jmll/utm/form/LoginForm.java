@@ -1,7 +1,7 @@
 package me.jmll.utm.form;
 
 /**
- * 3 POJO con dos atributos getters/setters:
+ * POJO con dos atributos getters/setters:
  * usuario: String, privado
  * password String, privado
  * */

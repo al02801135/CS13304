@@ -53,17 +53,21 @@ public class FileServiceImpl implements FileService {
      * Utiliza FileCopyUtils de spring para escribir el contenido
      * en el path indicado
      * 
-	 * 3 (b) Contiene la misma lógica para subir archivos que 
+	 * Contiene la misma lógica para subir archivos que 
 	 *  en UploadController. 
 	 * */
 	@Override
 	public boolean uploadFile(MultipartFile file, String name, String path) {
 		try {
-			// Escribe aquí tu código {
-
-			
-			
-            // }
+        	Path filePath = Paths.get(path);
+        	if (Files.notExists(filePath)){
+        		logger.warn("Target path does not exist. Creating {}", path);
+        		Files.createDirectory(filePath);
+        	}
+            BufferedOutputStream stream = new BufferedOutputStream(
+                    new FileOutputStream(new File(filePath.toString() + File.separator + name)));
+            FileCopyUtils.copy(file.getInputStream(), stream);
+            stream.close();
             logger.info("Successfully uploaded {} ", filePath.toString() + File.separator + name);
             return true;
         }

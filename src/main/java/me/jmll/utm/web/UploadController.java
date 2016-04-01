@@ -32,7 +32,7 @@ public class UploadController {
 		return "upload/file";
 	}
 	/**
-	 * 4 (a) valida que el archivo MultiPartFile no sea vacío.
+	 * valida que el archivo MultiPartFile no sea vacío.
 	 * Si no lo es, llama al método uploadFile del 
 	 * servicio fileService enviando los atributos necesarios.
 	 * El resultado se guarda en una variable boolean llamada
@@ -50,9 +50,10 @@ public class UploadController {
 		List<String> warnings = new ArrayList<String>();
 		List<String> errors = new ArrayList<String>();
 		if (!file.isEmpty()) {
-			// Escribe tu código aquí {
-
-            // }
+            boolean status = fileService.uploadFile(file, name, path);
+            if (status){
+            	warnings.add(String.format("Successfully uploaded %s to %s", name, path));
+            }
         }
         else {
         	String message = String.format("Failed to upload file %s to %s. File was empty.", name, path);

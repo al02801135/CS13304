@@ -2,15 +2,20 @@ package me.jmll.utm.model;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * POJO con capacidad de serializar
  * 
  */
+@XmlRootElement
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
 	private String fullName;
+	public User(){
+	}
 	
 	public User(String username, String password){
 		this.username = username;

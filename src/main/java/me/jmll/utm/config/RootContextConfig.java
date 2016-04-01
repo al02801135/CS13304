@@ -23,6 +23,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ErrorHandler;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,22 +37,24 @@ import com.fasterxml.jackson.databind.SerializationFeature;
  */
 @Configuration
 /**
- * 1 (a) configurar RootContextConfig para que soporte
+ * Configura RootContextConfig para que soporte
  * ejecución de métodos asíncronos y programados.
  * */
-// Escribe tu código aquí {
-
-// }
+@EnableAsync
+@EnableScheduling
 @ComponentScan(
 		basePackageClasses = {
 			   		me.jmll.utm.web.ComponentPackageMaker.class,
 			   		me.jmll.utm.repository.ComponentPackageMaker.class,
 			   		me.jmll.utm.service.ComponentPackageMaker.class,
 			   		me.jmll.utm.component.ComponentPackageMaker.class}, 
-		excludeFilters = @ComponentScan.Filter(Controller.class) )
+		excludeFilters = @ComponentScan.Filter({
+			Controller.class, 
+			ControllerAdvice.class}) )
 public class RootContextConfig implements AsyncConfigurer, SchedulingConfigurer {
 	private static final Logger logger = LogManager.getLogger(); 
 	private static final Logger schedulingLogger = LogManager.getLogger(String.format("%s-schedue", logger.getName()));
+	
 	/**
 	 * Busca y registra los módulos para serialización y deserialización
 	 */
@@ -101,27 +104,42 @@ public class RootContextConfig implements AsyncConfigurer, SchedulingConfigurer 
 	@Bean
 	public ThreadPoolTaskScheduler taskScheduler() {
 		/**
-		 * 1 (b) Configurar ThreadPoolTaskScheduler con un tamaño de pool
+		 * Configura ThreadPoolTaskScheduler con un tamaño de pool
 		 * de 20, con prefijo en los threads "job-", errorHandler y
 		 * ExecutionHandler para que registren eventos en shcedulingLogger 
 		 * */
 		ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
-		// Escribe tu código aquí {
-		
-		// }
+		taskScheduler.setPoolSize(20);
+		taskScheduler.setThreadNamePrefix("job-");
+		taskScheduler.setAwaitTerminationSeconds(60);
+		taskScheduler.setWaitForTasksToCompleteOnShutdown(true);
+		taskScheduler.setErrorHandler(new ErrorHandler() {
+			@Override
+			public void handleError(Throwable t) {
+				schedulingLogger.error("Unknown handling job {}", t);
+			}
+		});
+		taskScheduler.setRejectedExecutionHandler(new RejectedExecutionHandler(){
+			@Override
+			public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+				schedulingLogger.error("Job rejected {}", r);
+				
+			}});
 		return taskScheduler;
 	}
 
 	@Override
 	public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
+	/**
+	 * Configura JavaMailSender
+	 * */
 	@Bean
 	public JavaMailSender javaMailSender() {
 		/**
-		 *  5 (a) Utiliza Gmail como servidor de correo para enviar
+		 *  Utiliza Gmail como servidor de correo para enviar
 		 *  email en el servicio NotificationServiceImpl que consume 
 		 *  el bean mailSender. Agregar usuario y password de una cuenta
 		 *  genérica
@@ -129,9 +147,8 @@ public class RootContextConfig implements AsyncConfigurer, SchedulingConfigurer 
 	    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 	    mailSender.setHost("smtp.gmail.com");
 	    mailSender.setPort(587);
-	    // Escribe tu código aquí {
-	    
-	    // }
+	    mailSender.setUsername("me@jose-manuel.me");
+	    mailSender.setPassword("hhthlspdqidujhrj");
 	    Properties mailProperties = mailSender.getJavaMailProperties();
 	    mailProperties.put("mail.transport.protocol", "smtp");
 	    mailProperties.put("mail.smtp.auth", "true");
