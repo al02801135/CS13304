@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Resource {
 	private List<Link> links = new ArrayList<>();
-
+	
 	@XmlElement(name = "link")
 	public List<Link> getLinks() {
 		return links;

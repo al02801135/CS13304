@@ -15,13 +15,19 @@ import me.jmll.utm.model.Errors;
 @ControllerAdvice
 public class CustomExceptionHandler {
 	@ExceptionHandler(ResourceNotFoundException.class)
-	@ResponseBody @ResponseStatus(HttpStatus.NOT_FOUND)
-	public Errors handleNotFound(HttpServletRequest req, HttpServletResponse res, 
-			ResourceNotFoundException e){
+	@ResponseBody
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public Errors handleNotFound(HttpServletRequest req, HttpServletResponse res, ResourceNotFoundException e) {
 		Errors errors = new Errors();
 		errors.addError(new ErrorInfo(req.getRequestURL().toString(), HttpStatus.NOT_FOUND.toString(), e));
 		return errors;
-	} 
+	}
+
+	/**
+	 * 3 método handleNotAllowed para manejar la excepción
+	 * MethodNotAllowedException
+	 */
+	// Escribe tu código aquí {
+
+	// }
 }
-
-
